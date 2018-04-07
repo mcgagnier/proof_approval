@@ -1,0 +1,32 @@
+{
+  "name": "proof_approval",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcgagnier/proof_approval.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcgagnier/proof_approval/issues"
+  },
+  "homepage": "https://github.com/mcgagnier/proof_approval#readme",
+  "dependencies": {
+    "auth0": "^2.9.1",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "massive": "^4.7.1",
+    "passport": "^0.4.0",
+    "react-router-dom": "^4.2.2"
+  }
+}
