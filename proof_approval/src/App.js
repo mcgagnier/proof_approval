@@ -12,10 +12,11 @@ import Route from './route.js'
 class App extends Component {
   render() {
     return (
-            <div>
-            <Nav />
+      <body>
+            <div>          
            {Route}
           </div>
+      </body>
     );
   }
 }
