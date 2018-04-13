@@ -12,11 +12,11 @@ import Route from './route.js'
 class App extends Component {
   render() {
     return (
-      <body>
+      <main>
             <div>          
            {Route}
           </div>
-      </body>
+      </main>
     );
   }
 }

@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import '../Main.css'
+import '../input.css'
+import { changeNewUserAction } from '../redux/reducers/user'
 
 class Login extends Component {
     constructor() {
@@ -10,27 +12,49 @@ class Login extends Component {
             username: null,
             password: null
         }
-        this.handleNameInput = this.handleNameInput.bind(this)
-        this.handlePasswordInput = this.handlePasswordInput.bind(this)
+        // this.handleNameInput = this.handleNameInput.bind(this)
+        // this.handlePasswordInput = this.handlePasswordInput.bind(this)
     }
-    handleNameInput = (event) => {
-        let name = event.target.value
-        this.setState({ name })
-        console.log(this.state.name);
-      }
-   handlePasswordInput = (event) => {
-        let password = event.target.value
-        this.setState({ password })
-        console.log(this.state.password);
-      }
+//     handleNameInput = (event) => {
+//         let name = event.target.value
+//         this.setState({ name })
+//         console.log(this.state.name);
+//       }
+//    handlePasswordInput = (event) => {
+//         let password = event.target.value
+//         this.setState({ password })
+//         console.log(this.state.password);
+//       }
     render() {
         return (
-            <div>
-                <input onChange={this.handleNameInput} placeholder="Name" />
-                <input onChange={this.handlePasswordInput} placeholder="Password" />
-                <Link to={`/dashboard`}><h2>Login</h2></Link>
-            </div>
+            <form action="http://localhost:8686/login" method="post" className="input_contain">
+        <div>
+            <label>Email</label>
+            <input onChange={event => this.props.update({email: event.target.value})} placeholder="Email" className="input"/>
+        </div>
+        <div>
+            <label>Password</label>
+            <input onChange={event => this.props.update({password: event.target.value})} placeholder="Password" className="input"/>
+        </div>
+
+        <button type="submit" className="input_button">Login</button>
+    </form>
         )
     }
 }
-export default Login
+// export default Login
+
+function mapStateToProps(state) {
+    const { password, email } = state.user;
+    return { password, email }
+}
+
+const CHANGE_NEW_CUSTOMER = "CHANGE_NEW_CUSTOMER";
+
+function mapDispatchToProps(dispatch) {
+    return {
+        update: (changes) => dispatch(changeNewUserAction(changes))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
