@@ -29,8 +29,8 @@ class New_Job extends Component {
 
 }
 function mapStateToProps(state) {
-    const { job_name, substrate, qty, size, finishing } = state.job;
-    return { job_name, substrate, qty, size, finishing }
+    const { job_name, substrate, qty, size, finishing, email } = state.job;
+    return { job_name, substrate, qty, size, finishing, email }
 }
 
 const CHANGE_NEW_JOB = "CHANGE_NEW_JOB";

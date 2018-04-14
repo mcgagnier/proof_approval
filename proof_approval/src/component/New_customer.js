@@ -19,7 +19,8 @@ class New_Customer extends Component {
                 <input onChange={event => this.props.update({email: event.target.value})} placeholder="Email" className="input"/>
                 <input onChange={event => this.props.update({company: event.target.value})} placeholder="Company" className="input"/>
 
-                <button onClick={this.newCustomer} className="input_button">Create New Customer</button>
+                <button onClick={console.log(this.props.jobs)} className="input_button">Create New Customer</button>
+                <h1>{this.props.substrate}</h1>
             </div>
         )
     }
@@ -30,10 +31,13 @@ class New_Customer extends Component {
 // First you have input props initially (basic React props)
 // Then, run mapStateToProps (state, inputProps) => new stuff to add to props.
 // Finally, runDispatchToProps (dispatch, inputProps) => new stuff to add to props.
+
 function mapStateToProps(state) {
     const { name, password, phone, email, company } = state.user;
-    return { name, password, phone, email, company }
+    const { substrate } = state.job;
+    return { name, password, phone, email, company, substrate }
 }
+
 
 const CHANGE_NEW_CUSTOMER = "CHANGE_NEW_CUSTOMER";
 
@@ -42,5 +46,10 @@ function mapDispatchToProps(dispatch) {
         update: (changes) => dispatch(changeNewUserAction(changes))
     };
 }
+
+// function mapStateToProps(state) {
+//     const { substrate } = state.job;
+//     return { substrate }
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(New_Customer);

@@ -12,19 +12,9 @@ class Login extends Component {
             username: null,
             password: null
         }
-        // this.handleNameInput = this.handleNameInput.bind(this)
-        // this.handlePasswordInput = this.handlePasswordInput.bind(this)
+
     }
-//     handleNameInput = (event) => {
-//         let name = event.target.value
-//         this.setState({ name })
-//         console.log(this.state.name);
-//       }
-//    handlePasswordInput = (event) => {
-//         let password = event.target.value
-//         this.setState({ password })
-//         console.log(this.state.password);
-//       }
+
     render() {
         return (
             <form action="http://localhost:8686/login" method="post" className="input_contain">
@@ -42,7 +32,6 @@ class Login extends Component {
         )
     }
 }
-// export default Login
 
 function mapStateToProps(state) {
     const { password, email } = state.user;
