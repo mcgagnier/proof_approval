@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import axios from 'axios'
 import '../Main.css'
 import '../input.css'
 import { changeNewUserAction } from '../redux/reducers/user'
@@ -9,11 +10,15 @@ class New_Customer extends Component {
         super() 
     }
 
-  
+    newUser = () => {
+        console.log('i ran')
+        axios.post('http://localhost:8686/api/printing_users', this.props.user)
+          .then(response => console.log(response))
+      }
 
 
     render() {
-        // console.log('this.props', this.props)
+        // console.log('this.props.user', this.props.user)
         return (
             <div className="input_contain">
                 {/* <div onClick={this.state.} */}
@@ -58,7 +63,7 @@ class New_Customer extends Component {
 function mapStateToProps(state) {
     const { name, password, phone, email, company, admin } = state.user;
     const { substrate } = state.job;
-    return { name, password, phone, email, company, admin, substrate }
+    return { name, password, phone, email, company, admin, substrate, user: state.user }
 }
 
 
