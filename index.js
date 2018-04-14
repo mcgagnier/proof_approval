@@ -1,11 +1,14 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
-const cors = require('cors');
-const axios = require('axios');
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
+const cors = require('cors')
+const axios = require('axios')
 const auth0 = require('auth0')
+const massive = require('massive')
 const passport = require('passport')
 const LoginController = require('./controllers/LoginController')
+const user_controller = require('./controllers/user_controller')
+require('dotenv').config()
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -15,6 +18,7 @@ function verifyPassword (password) {
     else return false
 }
 
+massive( process.env.CONNECTION_STRING ).then ( dbInstance => app.set('db', dbInstance) );
 
 // passport.use(new LocalStrategy(
 //     // this username and password comes from what they entered
@@ -36,6 +40,7 @@ function verifyPassword (password) {
 // });
 
 app.post('/login', LoginController.post);
+app.post('/api/printing_users', user_controller.create);
 
 const port = 8686;
 app.listen(port, () => {

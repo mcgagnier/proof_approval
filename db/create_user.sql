@@ -1,0 +1,1 @@
+INSERT INTO printing_users ( admin, email, name, company, phone ) VALUES ( $1, $2, $3, $4, $5);

@@ -9,7 +9,11 @@ class New_Customer extends Component {
         super() 
     }
 
+  
+
+
     render() {
+        // console.log('this.props', this.props)
         return (
             <div className="input_contain">
                 {/* <div onClick={this.state.} */}
@@ -18,8 +22,27 @@ class New_Customer extends Component {
                 <input onChange={event => this.props.update({phone: event.target.value})} placeholder="Phone" className="input"/>
                 <input onChange={event => this.props.update({email: event.target.value})} placeholder="Email" className="input"/>
                 <input onChange={event => this.props.update({company: event.target.value})} placeholder="Company" className="input"/>
+                <div className="radio">
+                    <input
+                        onChange={event=> this.props.update({admin: event.target.value === 'true'})}
+                        type="radio"
+                        name="admin"
+                        value={false}
+                        checked={!this.props.admin}
+                    /> Customer
+                    <input
+                        onChange={event=> this.props.update({admin: event.target.value === 'true'})}
+                        type="radio"
+                        name="admin"
+                        value={true}
+                        checked={this.props.admin}
+                    /> Admin
+                </div>
 
-                <button onClick={console.log(this.props.jobs)} className="input_button">Create New Customer</button>
+                <button 
+                    onClick={this.newUser}
+                    className="input_button">Create New Customer
+                 </button>
                 <h1>{this.props.substrate}</h1>
             </div>
         )
@@ -33,9 +56,9 @@ class New_Customer extends Component {
 // Finally, runDispatchToProps (dispatch, inputProps) => new stuff to add to props.
 
 function mapStateToProps(state) {
-    const { name, password, phone, email, company } = state.user;
+    const { name, password, phone, email, company, admin } = state.user;
     const { substrate } = state.job;
-    return { name, password, phone, email, company, substrate }
+    return { name, password, phone, email, company, admin, substrate }
 }
 
 

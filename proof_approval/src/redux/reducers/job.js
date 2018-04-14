@@ -14,7 +14,7 @@ export function changeNewJobAction(changes) {
 const initialState = {
     id: null,
     job_name: null,
-    substrate: false,
+    substrate: null,
     qty: null,
     size: null,
     finishing: null
