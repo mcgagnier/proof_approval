@@ -8,6 +8,7 @@ const massive = require('massive')
 const passport = require('passport')
 const LoginController = require('./controllers/LoginController')
 const user_controller = require('./controllers/user_controller')
+const job_controller = require('./controllers/job_controller')
 require('dotenv').config()
 
 app.use(bodyParser.json());
@@ -31,7 +32,7 @@ massive( process.env.CONNECTION_STRING ).then ( dbInstance => app.set('db', dbIn
 //       })
 //       .catch(error => done(error))
 //     }
-//   ));
+//   )); 
 
 // app.post('/login', 
 //     passport.authenticate('local', { failureRedirect: '/login' }),
@@ -41,6 +42,10 @@ massive( process.env.CONNECTION_STRING ).then ( dbInstance => app.set('db', dbIn
 
 app.post('/login', LoginController.post);
 app.post('/api/printing_users', user_controller.create);
+app.delete('/api/printing_users', user_controller.delete);
+app.post('/api/printing_job', job_controller.create);
+app.delete('/api/printing_job:job', job_controller.delete);
+app.get('/api/printing_job', job_controller.get_all);
 
 const port = 8686;
 app.listen(port, () => {

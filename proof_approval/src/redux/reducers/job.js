@@ -1,5 +1,5 @@
-import axios from 'axios'
-import redux from 'redux'
+// import axios from 'axios'
+// import redux from 'redux'
 
 export const CHANGE_NEW_JOB  = "CHANGE_NEW_JOB";
 
@@ -12,12 +12,15 @@ export function changeNewJobAction(changes) {
 }
 
 const initialState = {
-    id: null,
+    user_id: null,
     job_name: null,
     substrate: null,
     qty: null,
     size: null,
-    finishing: null
+    finishing: null,
+    status: false,
+    changes: null,
+    user_id: null
 }
 
 export const changeJobReducer = (state = initialState, action) => {

@@ -1,0 +1,1 @@
+DELETE FROM printing_projects WHERE job = $1;

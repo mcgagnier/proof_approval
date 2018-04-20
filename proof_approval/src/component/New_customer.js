@@ -11,7 +11,7 @@ class New_Customer extends Component {
     }
 
     newUser = () => {
-        console.log('i ran')
+        // console.log('i ran', this.props.user)
         axios.post('http://localhost:8686/api/printing_users', this.props.user)
           .then(response => console.log(response))
       }

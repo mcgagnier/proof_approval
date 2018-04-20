@@ -1,7 +1,13 @@
 .input_contain {
     display: flex;
     flex-direction: column;
-    padding: 200px 0px;
+    padding: 200px 0px 50px 0px;
+}
+
+.input_contain_bottom {
+    display: flex;
+    flex-direction: row;
+    padding: 0px 0px 50px 0px;
 }
 
 .input {
@@ -16,16 +22,41 @@
 .input_button {
     background-color: #3F5765;
     color: #EFEFEF;
-    border-radius: 5%;
-    padding: 8px 20px;
+    border-radius: 4%;
+    padding: 4px 20px;
     width: 13
     0px;
     margin: 20px auto;
     font-size: 1.3em;
 }
+.input_button_sm {
+    background-color: #3F5765;
+    color: #EFEFEF;
+    border-radius: 3%;
+    padding: 0px 30px;
+    margin: 1px auto;
+    
+}
 
 .radio {
     color: #2B3A42;
     margin: auto;
-    padding: 20px 0px;
+    padding: 20px 10px;
+    border: 20px
+
+}
+
+.display-text {
+    color: #2B3A42;
+    margin: 0px 200px 10px 100px;
+}
+.proof_contain {
+    display: flex;
+
+}
+img {
+    max-height: 60%;
+    height: auto;
+    margin: 100px 0px 0px 0px;
+
 }

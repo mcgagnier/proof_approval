@@ -7,6 +7,7 @@ import Nav from './component/Nav';
 import New_customer from './component/New_customer';
 import New_job from './component/New_job';
 import Proof_view from './component/Proof_view';
+import job_view from './component/job_view'
 
 export default(
     <Switch>
@@ -16,6 +17,6 @@ export default(
         <Route component={New_customer} path = '/new/customer' />
         <Route component={New_job} path = '/new/job' />
         <Route component={Proof_view} path = '/proof' />
-        
+        <Route component={job_view} path = '/job' />
     </Switch>
 )

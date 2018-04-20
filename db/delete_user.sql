@@ -1,0 +1,1 @@
+DELETE FROM printing_users WHERE id = $1;

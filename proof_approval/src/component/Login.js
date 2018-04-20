@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import '../Main.css'
 import '../input.css'
 import { changeNewUserAction } from '../redux/reducers/user'
@@ -38,7 +38,7 @@ function mapStateToProps(state) {
     return { password, email }
 }
 
-const CHANGE_NEW_CUSTOMER = "CHANGE_NEW_CUSTOMER";
+// const CHANGE_NEW_CUSTOMER = "CHANGE_NEW_CUSTOMER";
 
 function mapDispatchToProps(dispatch) {
     return {
