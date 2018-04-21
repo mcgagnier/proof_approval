@@ -1,0 +1,2 @@
+SELECT * FROM printing_projects
+where job=2 ;

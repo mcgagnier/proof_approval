@@ -17,6 +17,9 @@
     "url": "https://github.com/mcgagnier/proof_approval/issues"
   },
   "homepage": "https://github.com/mcgagnier/proof_approval#readme",
+  "nodemonConfig": {
+      "ignore": ["proof_approval/*"]
+  },
   "dependencies": {
     "auth0": "^2.9.1",
     "axios": "^0.18.0",

@@ -24,10 +24,24 @@ module.exports = {
     },
 
     get_all: ( req, res, next ) => {
+        console.log('this is req.app', req.app)
         const dbInstance = req.app.get('db');
         console.log('getting all')
         
         dbInstance.get_all_jobs()
+        .then( jobs => res.send(jobs) )
+        .catch( (err) =>{
+            console.log(err);
+            res.status(500).send();
+        })
+    },
+
+    get_one: ( req, res, next ) => {
+        const dbInstance = req.app.get('db');
+        const { params } = req;
+        console.log('getting one', params.job)
+        
+        dbInstance.get_job([params.job])
         .then( jobs => res.send(jobs) )
         .catch( (err) =>{
             console.log(err);

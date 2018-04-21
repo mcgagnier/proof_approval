@@ -46,6 +46,7 @@ app.delete('/api/printing_users', user_controller.delete);
 app.post('/api/printing_job', job_controller.create);
 app.delete('/api/printing_job:job', job_controller.delete);
 app.get('/api/printing_job', job_controller.get_all);
+app.get('/api/printing_job/:job', job_controller.get_one);
 
 const port = 8686;
 app.listen(port, () => {
