@@ -18,16 +18,16 @@ class Login extends Component {
     render() {
         return (
             <form action="http://localhost:8686/login" method="post" className="input_contain">
-        <div>
-            <label>Email</label>
-            <input onChange={event => this.props.update({email: event.target.value})} placeholder="Email" className="input"/>
-        </div>
-        <div>
-            <label>Password</label>
-            <input onChange={event => this.props.update({password: event.target.value})} placeholder="Password" className="input"/>
-        </div>
+                <div>
+                    <label>Email</label>
+                    <input onChange={event => this.props.update({email: event.target.value})} placeholder="Email" className="input"/>
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input onChange={event => this.props.update({password: event.target.value})} placeholder="Password" className="input"/>
+                </div>
 
-        <button type="submit" className="input_button">Login</button>
+                <button type="submit" className="input_button">Login</button>
     </form>
         )
     }

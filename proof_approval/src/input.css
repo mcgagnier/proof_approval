@@ -16,14 +16,13 @@
     margin: 5px auto;
     font-size: 1.1em;
     color: #2B3A42;
-   
 }
 
 .input_button {
     background-color: #3F5765;
     color: #EFEFEF;
     border-radius: 4%;
-    padding: 4px 20px;
+    padding: 30px 20px;
     width: 13
     0px;
     margin: 20px auto;
@@ -31,18 +30,24 @@
 }
 .input_button_sm {
     background-color: #3F5765;
-    color: #EFEFEF;
+    color: #BDD4DE;
     border-radius: 3%;
     padding: 0px 30px;
-    margin: 1px auto;
-    
+    margin: 0px 10px;
+    text-decoration: none;
 }
 
 .radio {
     color: #2B3A42;
     margin: auto;
     padding: 20px 10px;
-   
+}
+
+.button_contain{
+    padding-top: 50px;
+    margin: auto;
+    /* display: flex;
+    justify-content: space-evenly; */
 
 }
 
@@ -59,4 +64,18 @@ img {
     height: auto;
     margin: 100px 0px 0px 0px;
 
+}
+
+.dashboard_contain {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px 50px 0px;
+}
+
+.dashboard_list {
+        padding: 8px 70px 8px 8px;
+        width: 400px;
+        margin: 5px auto;
+        font-size: 1.1em;
+        color: #2B3A42;
 }

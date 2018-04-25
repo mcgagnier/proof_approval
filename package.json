@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/mcgagnier/proof_approval#readme",
   "nodemonConfig": {
-      "ignore": ["proof_approval/*"]
+    "ignore": [
+      "proof_approval/*"
+    ]
   },
   "dependencies": {
     "auth0": "^2.9.1",
@@ -30,6 +32,7 @@
     "express-session": "^1.15.6",
     "massive": "^4.7.1",
     "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",

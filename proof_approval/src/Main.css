@@ -19,4 +19,7 @@ button {
 Link, h2 {
   color: #EFEFEF;
 }
+link {
+  text-decoration: none;
+}
 

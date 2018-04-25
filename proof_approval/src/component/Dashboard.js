@@ -40,22 +40,14 @@ class Dashboard extends Component {
         return (
             
             
-            <div>
-                
-                <Nav /><button 
-                    onClick={this.get_jobs}
-                    >Jobs
-                 </button>
-                 <div>
-                  {/* {this.state.jobs[1]} */}
-                </div>
+            <div className="dashboard_contain">
                 <div>
-                    {jobs.map(job => <h4 key={job.job}>Number:{job.job} Name: {job.job_name}</h4>)}
+                    {jobs.map(job => <h4 className="dashboard_list" key={job.job}>Number:{job.job} Name: {job.job_name}</h4>)}
                 </div>
-                
-                <h2 className="display-text">Job: {this.props.job_name}</h2> 
-               <button> <Link to={`/new/customer`}><h2>New Customer</h2></Link></button>
-               <button><Link to={`/new/job`}><h2>New Job</h2></Link></button>
+                <div className="button_contain">
+                    <button className="input_button_sm"> <Link to={`/new/customer`}><h2>New Customer</h2></Link></button>
+                    <button className="input_button_sm"><Link to={`/new/job`}><h2>New Job</h2></Link></button>
+                </div>
             </div>
             
         )

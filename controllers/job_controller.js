@@ -13,16 +13,6 @@ module.exports = {
         })
     },
 
-    delete: ( req, res ) => {
-        const dbInstance = req.app.get('db');
-        const { job } = req.body
-        console.log('req.body', req.body)
-        
-        dbInstance.delete_job([ job ])
-        .then( jobs => res.status(200).send( jobs ) )
-        .catch( () => res.status(500).send() );
-    },
-
     get_all: ( req, res, next ) => {
         console.log('this is req.app', req.app)
         const dbInstance = req.app.get('db');
@@ -36,18 +26,26 @@ module.exports = {
         })
     },
 
+    delete: ( req, res, next ) => {
+        const dbInstance = req.app.delete('db');
+        const { params } = req;
+        console.log('deleting one')
+        
+        dbInstance.delete_job([ params.job ])
+        .then( jobs => res.send( jobs ) )
+        .catch( () => res.status(500).send() );
+    },
+
     get_one: ( req, res, next ) => {
         const dbInstance = req.app.get('db');
         const { params } = req;
-        console.log('getting one', params.job)
+        console.log('getting one')
         
-        dbInstance.get_job([params.job])
+        dbInstance.get_job([ params.job ])
         .then( jobs => res.send(jobs) )
         .catch( (err) =>{
             console.log(err);
             res.status(500).send();
         })
     }
-
-
 } 
