@@ -3,7 +3,9 @@ import {connect} from 'react-redux'
 // import axios from 'axios'
 import '../Main.css'
 import '../input.css'
+import '../nav.css'
 import { changeNewJobAction } from '../redux/reducers/job'
+import Nav from './Nav'
 
 class job_view extends Component {
     constructor() {
@@ -18,7 +20,11 @@ class job_view extends Component {
     render() {
         return (
             <div>
+                <div className="dashboard_contain">
+                    <Nav />
+                </div>
                 <div className="proof_contain">
+                    
                     <div className="input_contain">  
                         <h2 className="display-text">Job: {this.props.job_name}</h2> 
                         <h2 className="display-text">Quantity: {this.props.qty}</h2>

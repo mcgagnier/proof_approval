@@ -48,7 +48,7 @@ class New_Customer extends Component {
                     onClick={this.newUser}
                     className="input_button">Create New Customer
                  </button>
-                <h1>{this.props.substrate}</h1>
+                
             </div>
         )
     }

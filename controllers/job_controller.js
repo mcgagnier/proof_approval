@@ -14,20 +14,20 @@ module.exports = {
     },
 
     get_all: ( req, res, next ) => {
-        console.log('this is req.app', req.app)
+        // console.log('this is req.app', req.app)
         const dbInstance = req.app.get('db');
         console.log('getting all')
         
         dbInstance.get_all_jobs()
         .then( jobs => res.send(jobs) )
         .catch( (err) =>{
-            console.log(err);
+            // console.log(err);
             res.status(500).send();
         })
     },
 
     delete: ( req, res, next ) => {
-        const dbInstance = req.app.delete('db');
+        const dbInstance = req.app.get('db');
         const { params } = req;
         console.log('deleting one')
         

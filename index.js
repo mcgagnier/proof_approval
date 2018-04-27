@@ -12,7 +12,6 @@ const job_controller = require('./controllers/job_controller')
 const express_session = require('express-session');
 require('dotenv').config()
 
-
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express_session({
@@ -44,7 +43,6 @@ massive( process.env.CONNECTION_STRING ).then ( dbInstance => {
     dbConnection = dbInstance
 });
 
-
 app.post("/login", passport.authenticate("local", {session: true}), (req, res) => {
     res.send(req.user);
 })
@@ -54,7 +52,7 @@ app.get("/logout", (req, res) => {
 })
 app.post('/login', LoginController.post);
 app.post('/api/printing_users', user_controller.create);
-app.delete('/api/printing_users', user_controller.delete);
+app.delete('/api/printing_users/:id', user_controller.delete);
 app.post('/api/printing_job', job_controller.create);
 app.delete('/api/printing_job/:job', job_controller.delete);
 app.get('/api/printing_job', job_controller.get_all);

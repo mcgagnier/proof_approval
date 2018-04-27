@@ -1,1 +1,2 @@
-select * from printing_projects;
+select * from printing_projects
+where job = $1; 
