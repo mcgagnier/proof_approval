@@ -16,7 +16,7 @@ module.exports = {
     get_all: ( req, res, next ) => {
         // console.log('this is req.app', req.app)
         const dbInstance = req.app.get('db');
-        console.log('getting all')
+        // console.log('getting all')
         
         dbInstance.get_all_jobs()
         .then( jobs => res.send(jobs) )
@@ -49,3 +49,4 @@ module.exports = {
         })
     }
 } 
+ 

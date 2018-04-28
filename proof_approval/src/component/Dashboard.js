@@ -25,10 +25,24 @@ class Dashboard extends Component {
           .then(response => this.setState({ jobs: response.data})).then(console.log("job on state", this.state.jobs))
     }
   
-    handleClick = () => {
+    handleClick = (jobid) => {
         console.log("click me")
-        axios.get(`http://localhost:8686/api/printing_job/`, { params: {job: 18} }).then(console.log(this.state.jobs[2].job_name))
-        .then(() => this.props.history.push('job'))
+        axios.get(`http://localhost:8686/api/printing_job/`+jobid.job).then(data => {
+            this.props.update({
+                job_name: data.data[0].job_name,
+                substrate: data.data[0].substrate,
+                qty: data.data[0].qty,
+                size: data.data[0].size,
+                finishing: data.data[0].finishing,
+                user_id: data.data[0].user_id,
+                status: data.data[0].status,
+                changes: data.data[0].changes})
+            console.log("redux", this.props)
+            console.log("job id", jobid.job)
+            // console.log("I am data", data.data[0].job_name)
+        this.props.history.push('job')
+    })
+        // .then(() => this.props.history.push('job'))
     }
     
     render() {
@@ -38,7 +52,7 @@ class Dashboard extends Component {
             <div className="dashboard_contain" >
                 <Nav />
                 <div >
-                    {jobs.map(job => <h4 className="dashboard_list"  key={job.job}onClick = {this.handleClick.bind(this)}>Job Number:{job.job} Name: {job.job_name}</h4> ) }
+                    {jobs.map(job => <h4 className="dashboard_list"  key={job.job}onClick = {this.handleClick.bind(this, job)}>Job Number:{job.job} Name: {job.job_name} Status: {job.status}</h4> ) }
                     
                 </div>
              
