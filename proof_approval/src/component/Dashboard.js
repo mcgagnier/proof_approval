@@ -29,16 +29,20 @@ class Dashboard extends Component {
         console.log("click me")
         axios.get(`http://localhost:8686/api/printing_job/`+jobid.job).then(data => {
             this.props.update({
-                job_name: data.data[0].job_name,
-                substrate: data.data[0].substrate,
-                qty: data.data[0].qty,
-                size: data.data[0].size,
-                finishing: data.data[0].finishing,
-                user_id: data.data[0].user_id,
-                status: data.data[0].status,
-                changes: data.data[0].changes})
+                ...data.data[0]
+            });
+            // this.props.update({
+            //     job_name: data.data[0].job_name,
+            //     substrate: data.data[0].substrate,
+            //     qty: data.data[0].qty,
+            //     size: data.data[0].size,
+            //     finishing: data.data[0].finishing,
+            //     user_id: data.data[0].user_id,
+            //     status: data.data[0].status,
+            //     changes: data.data[0].changes})
             console.log("redux", this.props)
             console.log("job id", jobid.job)
+            console.log(data.data, "data")
             // console.log("I am data", data.data[0].job_name)
         this.props.history.push('job')
     })

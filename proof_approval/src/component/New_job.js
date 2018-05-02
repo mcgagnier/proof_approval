@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import '../Main.css'
 import '../input.css'
+import Nav from './Nav';
 import { changeNewJobAction } from '../redux/reducers/job'
 
 class New_Job extends Component {
@@ -13,10 +14,13 @@ class New_Job extends Component {
         console.log('i ran', this.props.job)
         axios.post('http://localhost:8686/api/printing_job', this.props.job)
           .then(response => console.log(response))
+          .catch(err => alert('Must be logged in!'));
       }
     render() {
         return (
-            <div className="input_contain">   
+            
+            <div className="input_contain"> 
+                <Nav />
                  <input onChange={event => this.props.update({user_id: event.target.value})} placeholder="User ID" className="input"/> 
                 <input onChange={event => this.props.update({job_name: event.target.value})} placeholder="Job Name" className="input"/>
                 <input onChange={event => this.props.update({substrate: event.target.value})} placeholder="Substrate" className="input"/>

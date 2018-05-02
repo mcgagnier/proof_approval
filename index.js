@@ -13,7 +13,10 @@ const express_session = require('express-session');
 require('dotenv').config()
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    origin: true,
+    credentials: true
+}));
 app.use(express_session({
     secret: 'ginger',
     resave: false,
@@ -27,45 +30,55 @@ function verifyPassword (password) {
 }
 passport.use(require('./controllers/strategy'))
 
+let dbConnection = null;
 passport.serializeUser((user, done) => {
-    done(null, user.username)
+    done(null, user.email)
 })
-passport.deserializeUser((username, done) => {
-    // Probably do some database call...
-    done(null, {
-        username
+passport.deserializeUser((email, done) => {
+    dbConnection.get_user([ email ])
+    .then( users => {
+        done(null, users[0]);
+        res.status(201).send() 
+    })
+    .catch( (err) =>{
+        console.log(err);
+        res.status(500).send();
     })
 })
 
-let dbConnection = null;
 massive( process.env.CONNECTION_STRING ).then ( dbInstance => {
     app.set('db', dbInstance)
     dbConnection = dbInstance
+    module.exports.dbConnection = dbInstance;
 });
 
 app.post("/login", passport.authenticate("local", {session: true}), (req, res) => {
     res.send(req.user);
 })
 app.get("/logout", (req, res) => {
+
     req.logout();
     res.send("ok");
 })
-app.post('/login', LoginController.post);
+app.get("/user_info", (req, res) => res.send(req.user));
+// app.post('/login', LoginController.post);
 app.post('/api/printing_users', user_controller.create);
 app.delete('/api/printing_users/:id', user_controller.delete);
 app.post('/api/printing_job', job_controller.create);
 app.delete('/api/printing_job/:job', job_controller.delete);
 app.get('/api/printing_job', job_controller.get_all);
 app.get('/api/printing_job/:job', job_controller.get_one);
+// need job controller update and sql
+app.get('/api/printing_job_customer/:user_id', job_controller.get_customer_list)
 
 const port = 8686;
 app.listen(port, () => {
     console.log('Tuned in to channel ' + port);
 })
 
-module.exports = {
-    dbConnection
-}
+// module.exports = {
+//     dbConnection
+// }
 
 
 

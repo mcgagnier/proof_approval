@@ -3,7 +3,6 @@
     flex-direction: column;
     padding: 200px 0px 50px 0px;
 }
-
 .input_contain_bottom {
     display: flex;
     flex-direction: row;
@@ -11,30 +10,41 @@
 }
 
 .input {
-    padding: 8px 70px 8px 8px;
+    padding: 8px 10px 8px 8px;
     width: 400px;
     margin: 5px auto;
     font-size: 1.1em;
     color: #2B3A42;
+    font-family: Trebuchet ms;
+}
+.input_sm {
+    padding: 4px 10px 4px 8px;
+    width: 400px;
+    margin: 5px auto;
+    font-size: 1.1em;
+    color: #2B3A42;
+    font-family: Trebuchet ms;
 }
 
 .input_button {
     background-color: #3F5765;
     color: #EFEFEF;
-    border-radius: 4%;
-    padding: 30px 20px;
+    border-radius: 8px;
+    padding: 5px 20px;
     width: 13
     0px;
     margin: 20px auto;
     font-size: 1.3em;
+    font-family: trebuchet ms;
 }
 .input_button_sm {
     background-color: #3F5765;
     color: #BDD4DE;
-    border-radius: 3%;
+    border-radius: 8px;
     padding: 0px 30px;
     margin: 0px 10px;
     text-decoration: none;
+    font-family: Trebuchet ms;
 }
 
 .radio {

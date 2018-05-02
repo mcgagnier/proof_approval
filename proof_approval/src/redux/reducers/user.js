@@ -2,12 +2,20 @@
 // import redux from 'redux'
 
 export const CHANGE_NEW_USER  = "CHANGE_NEW_USER";
+export const LOGIN_USER = "LOGIN_USER"
 
 // For example, {name: "George"}
 export function changeNewUserAction(changes) {
   return { 
     changes,
     type: CHANGE_NEW_USER
+  };
+}
+
+export function loginUserAction(changes) {
+  return { 
+    changes,
+    type: LOGIN_USER
   };
 }
 
@@ -19,6 +27,15 @@ const initialState = {
     email: null,
     phone: null,
     company: null
+}
+
+export const loginUserReducer = (state = initialState, action) => {
+  if (action.type === LOGIN_USER) {
+    return Object.assign({}, state, action.changes)
+    console.log('on state')
+  } else {
+    return state;
+  }
 }
 
 export const changeUserReducer = (state = initialState, action) => {

@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import '../Main.css'
 import '../input.css'
+import Nav from './Nav';
 import { changeNewUserAction } from '../redux/reducers/user'
 
 class New_Customer extends Component {
@@ -21,6 +22,7 @@ class New_Customer extends Component {
         // console.log('this.props.user', this.props.user)
         return (
             <div className="input_contain">
+            <Nav />
                 {/* <div onClick={this.state.} */}
                 <input onChange={event => this.props.update({name: event.target.value})} placeholder="Name" className="input"/>
                 <input onChange={event => this.props.update({password: event.target.value})} placeholder="Password" className="input"/>

@@ -1,0 +1,1 @@
+SELECT * FROM printing_users WHERE email = $1;

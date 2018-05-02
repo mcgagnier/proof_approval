@@ -1,20 +1,24 @@
 const LocalStrategy = require('passport-local')
-const dbConnection = require('../index').dbConnection
 
-module.exports = new LocalStrategy((username, password, done) => {
-    console.log(username, password);
+module.exports = new LocalStrategy({
+        usernameField: 'email'
+    }, (email, password, done) => {
+    console.log(email, password);
+    const dbConnection = require('../index').dbConnection
     // TODO: Lookup password in database and check that.
     
     console.log('getting user')
     
-    dbConnection.get_job([ params.job ])
-    .then( jobs => res.send(jobs) )
-    if(username === "test" && password === "pass") {
-        const user = {
-            username: "test"
+    dbConnection.get_user([ email ])
+    .then(users => {
+        if (users.length === 1 && users[0].password === password) {
+            done(null, users[0])
+        } else {
+            done(null, false)
         }
-        done(null, user)
-    } else {
-        done(null, false)
-    }
+    })
+    .catch(err => {
+        console.log(`Could not authenticate user ${email} because ${err}.`)
+        done(err);
+    })
 })
