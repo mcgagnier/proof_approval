@@ -35,7 +35,7 @@ module.exports = {
         // console.log('this is req.app', req.app)
         const dbInstance = req.app.get('db');
         const { params } = req;
-        console.log('getting customer list', params)
+        // console.log('getting customer list', params)
         
         dbInstance.get_customer_jobs([ params.user_id ])
         .then( jobs => res.send(jobs) )
@@ -58,7 +58,7 @@ module.exports = {
     get_one: ( req, res, next ) => {
         const dbInstance = req.app.get('db');
         const { params } = req;
-        console.log('getting one', params)
+        // console.log('getting one', params)
         
         dbInstance.get_job([ params.job ])
         .then( jobs => res.send(jobs) )

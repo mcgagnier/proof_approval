@@ -9,7 +9,7 @@ class Nav extends Component {
     render() {
         return(
             <div className="nav">
-                 <Link to={`/dashboard`}><h2>Home</h2></Link>
+                 <Link to={`/dashboard`} className="nav_text"><h2>Home</h2></Link>
             </div>
         )
     }

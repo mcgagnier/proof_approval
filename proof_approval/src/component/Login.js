@@ -78,12 +78,11 @@ function mapDispatchToProps(dispatch) {
     return {
         update: (changes) => dispatch(changeNewUserAction(changes)),
         loginUser: user => {
-            console.log(user);
+            console.log("logging user", user);
             // this.props.update({
             //     name: user.name
             // })
-            // this.props.history.push('dashboard')
-        }
+         }
     };
 }
 
