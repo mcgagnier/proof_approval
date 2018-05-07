@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link, Route} from 'react-router-dom'
 import '../Main.css'
 import '../input.css'
-import { changeNewUserAction } from '../redux/reducers/user'
+import { changeNewUserAction, loginUserAction } from '../redux/reducers/user'
 import axios from 'axios';
 
 
@@ -26,7 +26,14 @@ class Login extends Component {
         event.preventDefault(); // Stop form submission.
         login(this.props.email, this.props.password).then(user => {
             this.props.loginUser(user);
-        });
+            if(user.admin) {
+                this.props.history.push('dashboard')
+            } else { this.props.history.push('customer')}
+        })
+        .catch( (err) =>{
+            console.log(err);
+            alert("Incorrect login information")
+        })
 
         return false; // Stop form submission.
     }
@@ -77,12 +84,7 @@ const CHANGE_NEW_CUSTOMER = "CHANGE_NEW_CUSTOMER";
 function mapDispatchToProps(dispatch) {
     return {
         update: (changes) => dispatch(changeNewUserAction(changes)),
-        loginUser: user => {
-            console.log("logging user", user);
-            // this.props.update({
-            //     name: user.name
-            // })
-         }
+        loginUser: (user) => dispatch(loginUserAction(user))
     };
 }
 

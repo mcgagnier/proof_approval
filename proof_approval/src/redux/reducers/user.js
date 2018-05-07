@@ -29,17 +29,8 @@ const initialState = {
     company: null
 }
 
-export const loginUserReducer = (state = initialState, action) => {
-  if (action.type === LOGIN_USER) {
-    return Object.assign({}, state, action.changes)
-    console.log('on state')
-  } else {
-    return state;
-  }
-}
-
 export const changeUserReducer = (state = initialState, action) => {
-  if (action.type === CHANGE_NEW_USER) {
+  if (action.type === CHANGE_NEW_USER || action.type === LOGIN_USER) {
     return Object.assign({}, state, action.changes)
   } else {
     return state;

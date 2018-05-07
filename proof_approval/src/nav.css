@@ -1,29 +1,22 @@
 .nav {
     background-color: #2B3A42;
-    height: 50px;
+    height: 65px;
     color: #EFEFEF;
-    padding: 0px;
-    border: 0px;
-    margin: 0px;
-    
+    padding: 0px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
 }
-.nav h2 {
-    color: #EFEFEF;
-}
-Link {
-    color: #EFEFEF;
-}
-
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
   }
-
   .nav_text {
     color: #BDD4DE;
-    padding: 4px 30px;
-    margin: 20px 4px;
+    padding: 4px 0px;
+    margin: 10px 0px;
     font-family: Trebuchet ms;
     text-decoration: none;
+    
 }

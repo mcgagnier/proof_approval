@@ -13,13 +13,16 @@ class New_Job extends Component {
     newJob = () => {
         console.log('i ran', this.props.job)
         axios.post('http://localhost:8686/api/printing_job', this.props.job)
-          .then(response => console.log(response))
+          .then(
+              response => {
+                  console.log(response)
+              this.props.history.push('job')})
           .catch(err => alert('Must be logged in!'));
       }
     render() {
         return (
             
-            <div className="input_contain"> 
+            <div className="dashboard_contain"> 
                 <Nav />
                  <input onChange={event => this.props.update({user_id: event.target.value})} placeholder="User ID" className="input"/> 
                 <input onChange={event => this.props.update({job_name: event.target.value})} placeholder="Job Name" className="input"/>
@@ -27,6 +30,8 @@ class New_Job extends Component {
                 <input onChange={event => this.props.update({qty: event.target.value})} placeholder="Quantity" className="input"/>
                 <input onChange={event => this.props.update({size: event.target.value})} placeholder="Size" className="input"/>
                 <input onChange={event => this.props.update({finishing: event.target.value})} placeholder="Finishing" className="input"/>
+                <input onChange={event => this.props.update({image_url: event.target.value})} placeholder="image_url" className="input"/>                
+                
 
                 <div className="radio">
                     <input
@@ -46,18 +51,18 @@ class New_Job extends Component {
                 </div>
 
                
-               <Link to="/job" className="input_button_sm"><p 
+               <button 
                     onClick={this.newJob}
-                    >New Job
-                 </p></Link>
+                    className="input_button">Create New Job
+                 </button>
             </div>
         )
     }
 
 }
 function mapStateToProps(state) {
-    const { job_name, substrate, qty, size, finishing, user_id, status, changes } = state.job;
-    return { job_name, substrate, qty, size, finishing, user_id, status, changes, job: state.job}
+    const { job_name, substrate, qty, size, finishing, user_id, status, changes, image_url } = state.job;
+    return { job_name, substrate, qty, size, finishing, user_id, status, changes, image_url,  job: state.job}
 }
 
 const CHANGE_NEW_JOB = "CHANGE_NEW_JOB";

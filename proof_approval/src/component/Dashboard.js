@@ -34,11 +34,6 @@ class Dashboard extends Component {
             // this.props.update({
             //     job_name: data.data[0].job_name,
             //     substrate: data.data[0].substrate,
-            //     qty: data.data[0].qty,
-            //     size: data.data[0].size,
-            //     finishing: data.data[0].finishing,
-            //     user_id: data.data[0].user_id,
-            //     status: data.data[0].status,
             //     changes: data.data[0].changes})
             console.log("redux", this.props)
             console.log("job id", jobid.job)
@@ -46,9 +41,7 @@ class Dashboard extends Component {
             // console.log("I am data", data.data[0].job_name)
         this.props.history.push('job')
     })
-        // .then(() => this.props.history.push('job'))
-    }
-    
+}
     render() {
         let jobs = this.state.jobs
         return (
@@ -61,8 +54,8 @@ class Dashboard extends Component {
                 </div>
              
                 <div className="button_contain">
-                    <button className="input_button_sm"> <Link to={`/new/customer`}><h2>New Customer</h2></Link></button>
-                    <button className="input_button_sm"><Link to={`/new/job`}><h2>New Job</h2></Link></button>
+                    <button className="input_button_sm"> <Link to={`/newcustomer`}><h2>New Customer</h2></Link></button>
+                    <button className="input_button_sm"><Link to={`/newjob`}><h2>New Job</h2></Link></button>
                 </div>
             </div>
             

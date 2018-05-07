@@ -10,6 +10,8 @@ class Nav extends Component {
         return(
             <div className="nav">
                  <Link to={`/dashboard`} className="nav_text"><h2>Home</h2></Link>
+                 <h1 className="nav_text">Proof Approval Prints</h1>
+                 <Link to={`/`} className="nav_text"><h2>Logout</h2></Link>
             </div>
         )
     }

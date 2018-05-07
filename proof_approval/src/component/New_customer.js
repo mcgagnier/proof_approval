@@ -14,14 +14,14 @@ class New_Customer extends Component {
     newUser = () => {
         // console.log('i ran', this.props.user)
         axios.post('http://localhost:8686/api/printing_users', this.props.user)
-          .then(response => console.log(response))
+          .then(response => console.log(response)).then(this.props.history.push('dashboard'))
       }
 
 
     render() {
         // console.log('this.props.user', this.props.user)
         return (
-            <div className="input_contain">
+            <div className="dashboard_contain">
             <Nav />
                 {/* <div onClick={this.state.} */}
                 <input onChange={event => this.props.update({name: event.target.value})} placeholder="Name" className="input"/>

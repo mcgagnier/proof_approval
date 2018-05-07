@@ -20,7 +20,8 @@ const initialState = {
     finishing: null,
     status: false,
     changes: null,
-    user_id: null
+    user_id: null,
+    image_url: null
 }
 
 export const changeJobReducer = (state = initialState, action) => {
@@ -32,14 +33,3 @@ export const changeJobReducer = (state = initialState, action) => {
 }
 
 export default changeJobReducer;
-
-
-
-// export default (state = initialState, action) => {
-//     switch (action.type) {
-//       case GET_USER_INFO + '_FULFILLED':
-//         return { ...state, ...action.payload.data }
-//       default:
-//         return state
-//     }
-//   }

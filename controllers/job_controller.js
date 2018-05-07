@@ -7,10 +7,10 @@ module.exports = {
             return;
         }
         const dbInstance = req.app.get('db');
-        const { job_name, substrate, qty, size, finishing, status, changes, user_id  } = req.body
+        const { job_name, substrate, qty, size, finishing, status, changes, user_id, image_url  } = req.body
         // console.log('req.body', req.body)
         
-        dbInstance.create_job([ job_name, substrate, qty, size, finishing, status, changes, user_id ])
+        dbInstance.create_job([ job_name, substrate, qty, size, finishing, status, changes, user_id, image_url ])
         .then( () => res.status(201).send() )
         .catch( (err) =>{
             console.log(err);
@@ -61,6 +61,18 @@ module.exports = {
         // console.log('getting one', params)
         
         dbInstance.get_job([ params.job ])
+        .then( jobs => res.send(jobs) )
+        .catch( (err) =>{
+            console.log(err);
+            res.status(500).send();
+        })
+    },
+    update_status: ( req, res, next ) => {
+        const dbInstance = req.app.get('db');
+        const { params } = req;
+        console.log('approval')
+        
+        dbInstance.update_status ([ params.job ])
         .then( jobs => res.send(jobs) )
         .catch( (err) =>{
             console.log(err);

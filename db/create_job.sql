@@ -1,1 +1,1 @@
-INSERT INTO printing_projects ( job_name, substrate, qty, size, finishing, status, changes, user_id ) VALUES ( $1, $2, $3, $4, $5, $6, $7, $8 );
+INSERT INTO printing_projects ( job_name, substrate, qty, size, finishing, status, changes, user_id, image_url ) VALUES ( $1, $2, $3, $4, $5, $6, $7, $8, $9);

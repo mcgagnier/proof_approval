@@ -14,8 +14,8 @@ export default(
         <Route component={Login} exact path = '/' />
         <Route component={Dashboard} path = '/dashboard'/>
         <Route component={Customer_dash} path = '/customer' />
-        <Route component={New_customer} path = '/new/customer' />
-        <Route component={New_job} path = '/new/job' />
+        <Route component={New_customer} path = '/newcustomer' />
+        <Route component={New_job} path = '/newjob' />
         <Route component={Proof_view} path = '/proof' />
         <Route component={job_view} path = '/job' />
     </Switch>
