@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import axios from 'axios'
 import '../Main.css'
 import '../input.css'
 import '../nav.css'
@@ -8,6 +7,7 @@ import { changeNewJobAction } from '../redux/reducers/job'
 import Nav from './Nav'
 import Maverik from './../images/Maverik.jpeg'
 import axios from 'axios'
+axios.defaults.withCredentials = true;
 
 class job_view extends Component {
     constructor() {
@@ -28,7 +28,7 @@ class job_view extends Component {
                     this.props.update({
                         ...data.data[0]
                     });
-                    console.log(data);
+                    console.log(data.data, "data");
                 })
             .catch(err => alert('Must be logged in!'));
     }
@@ -53,7 +53,7 @@ class job_view extends Component {
                         <h3 className="proof-text">Substrate: {this.props.substrate}</h3>
                         <h3 className="proof-text">Finishing: {this.props.finishing}</h3>
                     </div>
-                    <div ><img className="img_contain" src={Maverik} alt="proof approval" /></div>
+                    <div ><img className="img_contain" src={this.props.image_url} alt="proof approval" /></div>
                 </div>
                 <div className="input_contain_bottom">
                     {approval_text}

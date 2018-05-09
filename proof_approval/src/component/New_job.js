@@ -6,18 +6,30 @@ import '../Main.css'
 import '../input.css'
 import Nav from './Nav';
 import { changeNewJobAction } from '../redux/reducers/job'
+axios.defaults.withCredentials = true;
 
 class New_Job extends Component {
     
+    // function login(email, password) {
+    //     return axios.post('http://localhost:8686/login', {
+    //         email,
+    //         password
+    //     }, {
+    //         withCredentials: true
+    //     }).then(resp => resp.data)
+    // }
 
     newJob = () => {
         console.log('i ran', this.props.job)
-        axios.post('http://localhost:8686/api/printing_job', this.props.job)
+        axios.post('http://localhost:8686/api/printing_job', 
+        this.props.job)
           .then(
               response => {
                   console.log(response)
               this.props.history.push('job')})
-          .catch(err => alert('Must be logged in!'));
+          .catch(err => { 
+              alert('Must be logged in!')
+        console.log(err, "error")});
       }
     render() {
         return (

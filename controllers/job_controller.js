@@ -2,6 +2,8 @@ module.exports = {
 
     create: ( req, res ) => {
         // If exists, you are authenticated.
+        console.log(req.session)
+        console.log(req.body)
         if (!req.user) {
             res.status(401).send();
             return;

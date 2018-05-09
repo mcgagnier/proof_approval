@@ -5,6 +5,7 @@ import '../Main.css'
 import '../input.css'
 import { changeNewUserAction, loginUserAction } from '../redux/reducers/user'
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 
 class Login extends Component {
@@ -43,7 +44,7 @@ class Login extends Component {
             return <p>Hello, world!</p>;
         }
         return (
-            <form onSubmit={event => this.submit(event)} className="input_contain">
+            <form onSubmit={event => this.submit(event)} className="dashboard_contain">
                 <div className="input">
                     <label>Email</label>
                     <input onChange={event => this.props.update({email: event.target.value})} className="input"/>

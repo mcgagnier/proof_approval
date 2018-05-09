@@ -32,9 +32,11 @@ passport.use(require('./controllers/strategy'))
 
 let dbConnection = null;
 passport.serializeUser((user, done) => {
+    // console.log('serialize', user)
     done(null, user.email)
 }) 
 passport.deserializeUser((email, done) => {
+    // console.log('deserialize', email)
     dbConnection.get_user([ email ])
     .then( users => {
         done(null, users[0]);
@@ -43,7 +45,7 @@ passport.deserializeUser((email, done) => {
         console.log(err);
     })
 }) 
-
+ 
 massive( process.env.CONNECTION_STRING ).then ( dbInstance => {
     app.set('db', dbInstance)
     dbConnection = dbInstance
