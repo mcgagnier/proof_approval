@@ -23,10 +23,15 @@ class New_Job extends Component {
         console.log('i ran', this.props.job)
         axios.post('http://localhost:8686/api/printing_job', 
         this.props.job)
-          .then(
-              response => {
-                  console.log(response)
-              this.props.history.push('job')})
+          .then(data => {
+            this.props.update({
+                ...data.data[0]
+            });
+            this.props.history.push('job')
+            // console.log("redux", this.props)
+            // console.log("job id", jobid.job)
+            console.log(this.props, "props")
+        })
           .catch(err => { 
               alert('Must be logged in!')
         console.log(err, "error")});
@@ -73,8 +78,8 @@ class New_Job extends Component {
 
 }
 function mapStateToProps(state) {
-    const { job_name, substrate, qty, size, finishing, user_id, status, changes, image_url } = state.job;
-    return { job_name, substrate, qty, size, finishing, user_id, status, changes, image_url,  job: state.job}
+    const { job_name, substrate, qty, size, finishing, user_id, status, changes, job,  image_url } = state.job;
+    return { job_name, substrate, qty, size, finishing, user_id, status, changes, job, image_url,  job: state.job}
 }
 
 const CHANGE_NEW_JOB = "CHANGE_NEW_JOB";

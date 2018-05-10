@@ -20,7 +20,7 @@ const initialState = {
     finishing: null,
     status: false,
     changes: null,
-    user_id: null,
+    job: null,
     image_url: null
 }
 

@@ -13,7 +13,7 @@ module.exports = {
         // console.log('req.body', req.body)
         
         dbInstance.create_job([ job_name, substrate, qty, size, finishing, status, changes, user_id, image_url ])
-        .then( () => res.status(201).send() )
+        .then( () => res.status(201).send(job) )
         .catch( (err) =>{
             console.log(err);
             res.status(500).send();

@@ -12,22 +12,17 @@ class Dashboard extends Component {
         super()
         this.state = {
             jobs: []
-        }
-        
+        } 
     }
-
-
     componentDidMount() {
         this.get_jobs()
     }
-
     // logout = () => {
     //     console.log("logging out")
     //     axios.post('http://localhost:8686/logout').then(res => {
     //         this.props.history.push('/')
     //     }).catch(err => this.props.history.push('/'));
     // }
-
     get_jobs = () => {
         // console.log("loading")
         axios.get('http://localhost:8686/api/printing_job')

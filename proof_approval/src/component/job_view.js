@@ -21,16 +21,18 @@ class job_view extends Component {
         //   .then(response => console.log(response)).then(this.props.history.push('job'))
         //   .catch(err => alert('Must be logged in!'));
     }
-    update_status = (job_id) => {
+    update_status = (job) => {
+        console.log(this.props.job)
         axios.put(`http://localhost:8686/api/update_status/`+this.props.job.job)
             .then(
                 data => {
                     this.props.update({
                         ...data.data[0]
                     });
-                    console.log(data.data, "data");
+                    console.log("data", this.props.job);
                 })
-            .catch(err => alert('Must be logged in!'));
+            .catch(err => console.log("error log", err));
+            // err => alert('Must be logged in!')
     }
     render() {
         let approval_text
