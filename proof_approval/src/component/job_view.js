@@ -25,9 +25,10 @@ class job_view extends Component {
         console.log(this.props.job)
         axios.put(`http://localhost:8686/api/update_status/`+this.props.job.job)
             .then(
+                // We can assume status is true since jobs can't be unapproved and API was hit successfully.
                 data => {
                     this.props.update({
-                        ...data.data[0]
+                        status: true
                     });
                     console.log("data", this.props.job);
                 })
