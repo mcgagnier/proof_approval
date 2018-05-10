@@ -25,7 +25,7 @@ class New_Job extends Component {
         this.props.job)
           .then(data => {
             this.props.update({
-                ...data.data[0]
+                ...data.data
             });
             this.props.history.push('job')
             // console.log("redux", this.props)

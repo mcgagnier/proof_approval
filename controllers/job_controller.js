@@ -12,12 +12,22 @@ module.exports = {
         const { job_name, substrate, qty, size, finishing, status, changes, user_id, image_url  } = req.body
         // console.log('req.body', req.body)
         
-        dbInstance.create_job([ job_name, substrate, qty, size, finishing, status, changes, user_id, image_url ])
-        .then( () => res.status(201).send(job) )
-        .catch( (err) =>{
+        dbInstance.printing_projects.insert({
+            job_name,
+            substrate,
+            qty,
+            size,
+            finishing,
+            status,
+            changes,
+            user_id,
+            image_url
+        }).then(job => {
+            res.status(201).send(job);
+        }).catch(err => {
             console.log(err);
             res.status(500).send();
-        })
+        });
     },
 
     get_all: ( req, res, next ) => {
