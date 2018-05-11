@@ -35,3 +35,13 @@ body {
     flex-direction: column;
     margin: 50px 0px;
 }
+
+.medium_text {
+    color: #FF530D;
+    padding: 4px 0px;
+    margin: auto;
+    font-family: Trebuchet ms;
+    text-decoration: none;
+    font-size: 2em;
+    
+}

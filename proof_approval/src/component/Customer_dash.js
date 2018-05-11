@@ -56,8 +56,15 @@ class Customer_Dash extends Component {
             <div className="dashboard_contain" >
                 <Nav />
                 <div >
-                    {jobs.map(job => <h4 className="dashboard_list"  key={job.job}onClick = {this.handleClick.bind(this, job)}>Job Number:{job.job} Name: {job.job_name} Status: {job.status}</h4> ) }
-                    
+                    {jobs.map(job =>
+                    <h3 className="dashboard_list" key={job.job} onClick={this.handleClick.bind(this, job)}>
+                    <span className="list_span">Job Number:  {job.job}</span>
+                    <span className="list_span">Title: {job.job_name}</span>
+                    Status: {job.status ? <span>Approved</span> : <span>Proof Out</span>}</h3>)}
+
+                </div>
+                <div className="button_contain">
+                    <h1 className="medium_text">Click on a job to view proofs</h1>
                 </div>
              
                 {/* <div className="button_contain">

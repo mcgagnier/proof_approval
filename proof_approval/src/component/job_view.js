@@ -38,7 +38,7 @@ class job_view extends Component {
     render() {
         let approval_text
         if (this.props.status) {
-            approval_text = <p>Thank you for approving</p>;
+            approval_text = <p className="medium_text">Thank you for approving</p>;
         } else {
             approval_text = <button className="input_button" onClick={this.update_status}>Approve Proof</button>;
         }
