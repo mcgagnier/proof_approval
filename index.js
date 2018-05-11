@@ -57,7 +57,9 @@ app.post("/login", passport.authenticate("local", {session: true}), (req, res) =
     res.send(req.user);
 })
 app.post("/logout", (req, res) => {
+    console.log('req.logout', req.logout)
     req.logout();
+    delete req.session;
     res.send("ok");
 })
 app.get("/user_info", (req, res) => res.send(req.user));
@@ -74,7 +76,6 @@ const port = 8686;
 app.listen(port, () => {
     console.log('Tuned in to channel ' + port);
 })
-
 
 
 

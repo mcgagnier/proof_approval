@@ -17,12 +17,12 @@ class Dashboard extends Component {
     componentDidMount() {
         this.get_jobs()
     }
-    // logout = () => {
-    //     console.log("logging out")
-    //     axios.post('http://localhost:8686/logout').then(res => {
-    //         this.props.history.push('/')
-    //     }).catch(err => this.props.history.push('/'));
-    // }
+    logout = () => {
+        console.log("logging out")
+        axios.post('http://localhost:8686/logout').then(res => {
+            this.props.history.push('/')
+        }).catch(err => this.props.history.push('/'));
+    }
     get_jobs = () => {
         // console.log("loading")
         axios.get('http://localhost:8686/api/printing_job')
@@ -74,7 +74,7 @@ class Dashboard extends Component {
                 <div className="button_contain">
                     <button className="input_button_sm"> <Link to={`/newcustomer`}><h2>New Customer</h2></Link></button>
                     <button className="input_button_sm"><Link to={`/newjob`}><h2>New Job</h2></Link></button>
-                    {/* <button className="nav_text" onClick={this.logout}>Logout</button> */}
+                    <button className="nav_text" onClick={this.logout}>Logout</button>
                 </div>
 
             </div>
