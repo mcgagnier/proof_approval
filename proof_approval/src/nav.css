@@ -13,10 +13,25 @@ body {
     font-family: sans-serif;
   }
   .nav_text {
-    color: #BDD4DE;
+    color: #EFEFEF;
     padding: 4px 0px;
     margin: 10px 0px;
     font-family: Trebuchet ms;
     text-decoration: none;
     
+}
+.welcome_text {
+    color: #2B3A42;
+    padding: 4px 0px 10px 0px;
+    margin: auto;
+    font-family: Trebuchet ms;
+    text-decoration: none;
+    font-size: 4.5em;
+    font-weight: bold;
+    
+}
+.welcome_contain {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0px;
 }

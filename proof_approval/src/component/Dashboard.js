@@ -12,7 +12,7 @@ class Dashboard extends Component {
         super()
         this.state = {
             jobs: []
-        } 
+        }
     }
     componentDidMount() {
         this.get_jobs()
@@ -26,7 +26,12 @@ class Dashboard extends Component {
     get_jobs = () => {
         // console.log("loading")
         axios.get('http://localhost:8686/api/printing_job')
-            .then(response => this.setState({ jobs: response.data }))
+            .then(response => {
+                this.setState({ jobs: response.data })
+                console.log(response.data)
+            }
+
+            )
     }
 
     handleClick = (jobid) => {
@@ -47,12 +52,22 @@ class Dashboard extends Component {
     }
     render() {
         let jobs = this.state.jobs
+        let status_text
+        if (this.props.status) {
+            status_text = <p>Approved</p>;
+        } else {
+            status_text = <p>Proof Out</p>;;
+        }
         return (
 
             <div className="dashboard_contain" >
                 <Nav />
                 <div >
-                    {jobs.map(job => <h4 className="dashboard_list" key={job.job} onClick={this.handleClick.bind(this, job)}>Job Number:{job.job} Name: {job.job_name} Status: {job.status}</h4>)}
+                    {jobs.map(job =>
+                    <h3 className="dashboard_list" key={job.job} onClick={this.handleClick.bind(this, job)}>
+                    <span className="list_span">Job Number:  {job.job}</span>
+                    <span className="list_span">Title: {job.job_name}</span>
+                    Status: {job.status ? <span>Approved</span> : <span>Proof Out</span>}</h3>)}
 
                 </div>
 
@@ -61,7 +76,7 @@ class Dashboard extends Component {
                     <button className="input_button_sm"><Link to={`/newjob`}><h2>New Job</h2></Link></button>
                     {/* <button className="nav_text" onClick={this.logout}>Logout</button> */}
                 </div>
-                
+
             </div>
 
         )

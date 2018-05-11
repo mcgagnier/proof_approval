@@ -101,8 +101,11 @@
 
 .dashboard_list {
         padding: 8px 70px 8px 8px;
-        width: 400px;
+        width: 900px;
         margin: 5px auto;
-        font-size: 1.1em;
+        font-size: 1.3em;
         color: #2B3A42;
+}
+.list_span {
+    margin-right: 20px;
 }
