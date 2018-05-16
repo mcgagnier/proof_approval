@@ -16,14 +16,14 @@ class job_view extends Component {
         }
     }
     changes = () => {
-        console.log('changes', this.props.job.job_changes)
-        // axios.post('http://localhost:8686/api/printing_job', this.props.job.changes)
-        //   .then(response => console.log(response)).then(this.props.history.push('job'))
-        //   .catch(err => alert('Must be logged in!'));
+        console.log('changes', this.props.job.changes)
+        axios.put(`http://localhost:8686/api/update_changes/`+this.props.job.job, this.props.job.changes)
+          .then(response => console.log(response))
+          .catch(err => alert('Must be logged in!'));
     }
     update_status = (job) => {
         console.log(this.props.job)
-        axios.put(`http://localhost:8686/api/update_status/`+this.props.job.job)
+        axios.put(`http://localhost:8686/api/update_status/` + this.props.job.job)
             .then(
                 // We can assume status is true since jobs can't be unapproved and API was hit successfully.
                 data => {
@@ -33,10 +33,11 @@ class job_view extends Component {
                     console.log("data", this.props.job);
                 })
             .catch(err => console.log("error log", err));
-            // err => alert('Must be logged in!')
+        // err => alert('Must be logged in!')
     }
     render() {
         let approval_text
+        let changes_text
         if (this.props.status) {
             approval_text = <p className="medium_text">Thank you for approving</p>;
         } else {
@@ -64,7 +65,7 @@ class job_view extends Component {
                 <div className="input_contain_bottom">
                     <button onClick={this.changes} className="input_button">Submit Changes</button>
 
-                    <input onChange={event => this.props.update({ job_changes: event.target.value })} placeholder="Changes" className="input_change" />
+                    <input onChange={event => this.props.update({ changes: event.target.value })} placeholder="Changes" className="input_change" />
 
                 </div>
             </div>

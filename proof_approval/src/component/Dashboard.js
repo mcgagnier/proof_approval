@@ -17,12 +17,7 @@ class Dashboard extends Component {
     componentDidMount() {
         this.get_jobs()
     }
-    logout = () => {
-        console.log("logging out")
-        axios.post('http://localhost:8686/logout').then(res => {
-            this.props.history.push('/')
-        }).catch(err => this.props.history.push('/'));
-    }
+
     get_jobs = () => {
         // console.log("loading")
         axios.get('http://localhost:8686/api/printing_job')
@@ -50,6 +45,15 @@ class Dashboard extends Component {
             // console.log(data.data, "data")
         })
     }
+    deleteButton = (jobid) => {
+        console.log("click me")
+        axios.delete(`http://localhost:8686/api/printing_job/` + jobid.job).then(data => {
+            this.props.update({
+                ...data.data[0]
+            });
+            this.props.history.push('dashboard')
+        })
+    }
     render() {
         let jobs = this.state.jobs
         let status_text
@@ -65,16 +69,19 @@ class Dashboard extends Component {
                 <div >
                     {jobs.map(job =>
                     <h3 className="dashboard_list" key={job.job} onClick={this.handleClick.bind(this, job)}>
-                    <span className="list_span">Job Number:  {job.job}</span>
-                    <span className="list_span">Title: {job.job_name}</span>
-                    Status: {job.status ? <span>Approved</span> : <span>Proof Out</span>}</h3>)}
+                    <span className="list_span">Job:  <span className="list_span_ornage">{job.job}</span></span>
+
+                    <span className="list_span">Customer ID:  <span className="list_span_ornage">{job.user_id}</span></span>                    <span className="list_span">Title: {job.job_name}</span>
+                    Status: {job.status ? <span>Approved</span> : <span>Proof Out</span>}<span><button className="input_button_sm" onClick={this.deleteButton.bind(this, job)}><h3>Delete</h3></button></span></h3>)}
 
                 </div>
 
                 <div className="button_contain">
                     <button className="input_button_sm"> <Link to={`/newcustomer`}><h2>New Customer</h2></Link></button>
                     <button className="input_button_sm"><Link to={`/newjob`}><h2>New Job</h2></Link></button>
-                    <button className="nav_text" onClick={this.logout}>Logout</button>
+                </div>
+                <div className="button_contain">
+                    <h1 className="medium_text">Click on a job to view proofs</h1>
                 </div>
 
             </div>

@@ -20,8 +20,8 @@ class Customer_Dash extends Component {
     }
 
     get_jobs = () => {
-        console.log("loading customer list")
-        axios.get('http://localhost:8686/api/printing_job_customer/12')
+        console.log("loading jobs", this.props.user)
+        axios.get(`http://localhost:8686/api/printing_job_customer/`+this.props.user.id)
           .then(response => this.setState({ jobs: response.data})).then(console.log("job on state", this.state.jobs))
     }
   
@@ -79,7 +79,9 @@ class Customer_Dash extends Component {
 
 function mapStateToProps(state) {
     const { job_name, substrate, qty, size, finishing, user_id, status, changes } = state.job;
-    return { job_name, substrate, qty, size, finishing, user_id, status, changes, job: state.job}
+    const { id } = state.user;
+    return { job_name, substrate, qty, size, finishing, user_id, status, changes, id, job: state.job, user: state.user}
+    
 }
 
 const CHANGE_NEW_JOB = "CHANGE_NEW_JOB";

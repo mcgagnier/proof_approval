@@ -70,6 +70,8 @@ app.delete('/api/printing_job/:job', job_controller.delete);
 app.get('/api/printing_job', job_controller.get_all);
 app.get('/api/printing_job/:job', job_controller.get_one);
 app.put('/api/update_status/:job', job_controller.update_status);
+app.put('/api/update_changes/:job', job_controller.update_changes);
+
 app.get('/api/printing_job_customer/:user_id', job_controller.get_customer_list)
 
 const port = 8686;

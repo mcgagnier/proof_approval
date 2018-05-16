@@ -90,6 +90,18 @@ module.exports = {
             console.log(err);
             res.status(500).send();
         })
+    },
+    update_changes: ( req, res, next ) => {
+        const dbInstance = req.app.get('db');
+        const {  changes, job  } = req.body
+        console.log('changes', req.body)
+        
+        dbInstance.update_changes ([ changes, job ])
+        .then( jobs => res.send(jobs) )
+        .catch( (err) =>{
+            console.log(err);
+            res.status(500).send();
+        })
     }
 } 
  

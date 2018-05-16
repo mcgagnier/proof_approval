@@ -50,13 +50,14 @@
 }
 .input_button_sm {
     background-color: #3F5765;
-    color: #BDD4DE;
+    color: #EFEFEF;
     border-radius: 8px;
-    padding: 3px 30px;
+    padding: 3px 20px;
     margin: 0px 10px;
     text-decoration: none;
     font-family: Trebuchet ms;
 }
+
 .radio {
     color: #2B3A42;
     margin: auto;
@@ -108,4 +109,8 @@
 }
 .list_span {
     margin-right: 20px;
+}
+.list_span_orange {
+    margin-right: 20px;
+    color: red;
 }
