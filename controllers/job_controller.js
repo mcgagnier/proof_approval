@@ -94,7 +94,7 @@ module.exports = {
     update_changes: ( req, res, next ) => {
         const dbInstance = req.app.get('db');
         const {  changes, job  } = req.body
-        console.log('changes', req.body)
+        console.log('changesBack', req.body)
         
         dbInstance.update_changes ([ changes, job ])
         .then( jobs => res.send(jobs) )

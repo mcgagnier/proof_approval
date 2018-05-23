@@ -4,7 +4,7 @@ import '../Main.css'
 import '../input.css'
 import '../nav.css'
 import { changeNewJobAction } from '../redux/reducers/job'
-import Nav from './Nav'
+import Nav from './Nav' 
 import Maverik from './../images/Maverik.jpeg'
 import axios from 'axios'
 axios.defaults.withCredentials = true;
