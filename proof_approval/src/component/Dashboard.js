@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Nav from './Nav';
 import { Link, Route } from 'react-router-dom';
 import axios from 'axios'
+// import process from 'process'
 import '../Main.css'
 import '../input.css'
 import { changeNewJobAction } from '../redux/reducers/job'
@@ -19,8 +20,8 @@ class Dashboard extends Component {
     }
 
     get_jobs = () => {
-        // console.log("loading")
-        axios.get('http://localhost:8686/api/printing_job')
+        console.log(process.env.NODE_ENV)
+        axios.get(`${process.env.REACT_APP_API}/api/printing_job`)
             .then(response => {
                 this.setState({ jobs: response.data })
                 console.log(response.data)
@@ -31,7 +32,7 @@ class Dashboard extends Component {
 
     handleClick = (jobid) => {
         console.log("click me")
-        axios.get(`http://localhost:8686/api/printing_job/` + jobid.job).then(data => {
+        axios.get(`${process.env.REACT_APP_API}/api/printing_job/` + jobid.job).then(data => {
             this.props.update({
                 ...data.data[0]
             });
@@ -47,7 +48,7 @@ class Dashboard extends Component {
     }
     deleteButton = (jobid) => {
         console.log("click me")
-        axios.delete(`http://localhost:8686/api/printing_job/` + jobid.job).then(data => {
+        axios.delete(`${process.env.REACT_APP_API}/api/printing_job/` + jobid.job).then(data => {
             this.props.update({
                 ...data.data[0]
             });
@@ -104,21 +105,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-
-
-
-
-
-
-
-   // get_jobs = () => {
-    //     console.log("loading")
-    //     axios.get('http://localhost:8686/api/printing_job')
-    //       .then(response => console.log(response.data , this.state.jobs))
-    // }
-
-      // get_job = () => {
-    //     console.log("loading one")
-    //     axios.get('http://localhost:8686/api/printing_job') 
-    //       .then(response => this.setState({ jobs: response.data})).then(console.log("job on state", this.state.jobs))
-    // }

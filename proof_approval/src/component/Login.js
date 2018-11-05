@@ -73,7 +73,7 @@ class Login extends Component {
 // }
 
 function login(email, password) {
-    return axios.post('http://localhost:8686/login', {
+    return axios.post(`${process.env.REACT_APP_API}/login`, {
         email,
         password
     }, {

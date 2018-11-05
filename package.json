@@ -16,7 +16,6 @@
   "bugs": {
     "url": "https://github.com/mcgagnier/proof_approval/issues"
   },
-  
   "nodemonConfig": {
     "ignore": [
       "proof_approval/*"

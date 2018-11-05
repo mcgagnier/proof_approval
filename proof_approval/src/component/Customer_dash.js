@@ -21,13 +21,13 @@ class Customer_Dash extends Component {
 
     get_jobs = () => {
         console.log("loading jobs", this.props.user)
-        axios.get(`http://localhost:8686/api/printing_job_customer/`+this.props.user.id)
+        axios.get(`${process.env.REACT_APP_API}/api/printing_job_customer/`+this.props.user.id)
           .then(response => this.setState({ jobs: response.data})).then(console.log("job on state", this.state.jobs))
     }
   
     handleClick = (jobid) => {
         console.log("click me")
-        axios.get(`http://localhost:8686/api/printing_job/`+jobid.job).then(data => {
+        axios.get(`${process.env.REACT_APP_API}/api/printing_job/`+jobid.job).then(data => {
             this.props.update({
                 ...data.data[0]
             });
@@ -94,20 +94,3 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Customer_Dash);
 
-
-
-
-
-
-
-   // get_jobs = () => {
-    //     console.log("loading")
-    //     axios.get('http://localhost:8686/api/printing_job')
-    //       .then(response => console.log(response.data , this.state.jobs))
-    // }
-
-      // get_job = () => {
-    //     console.log("loading one")
-    //     axios.get('http://localhost:8686/api/printing_job') 
-    //       .then(response => this.setState({ jobs: response.data})).then(console.log("job on state", this.state.jobs))
-    // }

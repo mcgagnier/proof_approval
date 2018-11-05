@@ -13,7 +13,7 @@ class New_Customer extends Component {
 
     newUser = () => {
         // console.log('i ran', this.props.user)
-        axios.post('http://localhost:8686/api/printing_users', this.props.user)
+        axios.post(`${process.env.REACT_APP_API}/api/printing_users`, this.props.user)
           .then(response => console.log(response)).then(this.props.history.push('dashboard'))
       }
 

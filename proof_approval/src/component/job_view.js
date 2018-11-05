@@ -17,13 +17,13 @@ class job_view extends Component {
     }
     changes = () => {
         console.log('changes', this.props.job.changes)
-        axios.put(`http://localhost:8686/api/update_changes/`+this.props.job.job, this.props.job.changes)
+        axios.put(`${process.env.REACT_APP_API}/api/update_changes/`+this.props.job.job, this.props.job.changes)
           .then(response => console.log(response))
           .catch(err => alert('Must be logged in!'));
     }
     update_status = (job) => {
         console.log(this.props.job)
-        axios.put(`http://localhost:8686/api/update_status/` + this.props.job.job)
+        axios.put(`${process.env.REACT_APP_API}/api/update_status/` + this.props.job.job)
             .then(
                 // We can assume status is true since jobs can't be unapproved and API was hit successfully.
                 data => {

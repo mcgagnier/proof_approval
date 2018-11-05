@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
@@ -11,6 +12,13 @@ const user_controller = require('./controllers/user_controller')
 const job_controller = require('./controllers/job_controller')
 const express_session = require('express-session');
 require('dotenv').config()
+const process = require('process');
+
+app.use( express.static( `${__dirname}/proof_approval/build` ) );
+
+app.get('/', (req, res)=>{
+    res.sendFile(path.join(__dirname, '/proof_approval/build/index.html'));
+});
 
 app.use(bodyParser.json());
 app.use(cors({
@@ -18,7 +26,7 @@ app.use(cors({
     credentials: true
 }));
 app.use(express_session({
-    secret: 'ginger',
+    secret: process.env.secret,
     resave: false,
     saveUninitialized: false
 }));
@@ -45,7 +53,7 @@ passport.deserializeUser((email, done) => {
         console.log(err);
     })
 }) 
- 
+  
 massive( process.env.CONNECTION_STRING ).then ( dbInstance => {
     app.set('db', dbInstance)
     dbConnection = dbInstance

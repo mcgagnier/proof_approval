@@ -14,7 +14,7 @@ class Nav extends Component {
 
     logout = () => {
         console.log("logging out")
-        axios.post('http://localhost:8686/logout').then(res => {
+        axios.post(`${process.env.REACT_APP_API}/logout`).then(res => {
             this.props.history.push('/')
             this.props.logOut()
         }).catch(err => this.props.history.push('/'));

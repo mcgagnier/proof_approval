@@ -9,19 +9,10 @@ import { changeNewJobAction } from '../redux/reducers/job'
 axios.defaults.withCredentials = true;
 
 class New_Job extends Component {
-    
-    // function login(email, password) {
-    //     return axios.post('http://localhost:8686/login', {
-    //         email,
-    //         password
-    //     }, {
-    //         withCredentials: true
-    //     }).then(resp => resp.data)
-    // }
 
     newJob = () => {
         console.log('i ran', this.props.job)
-        axios.post('http://localhost:8686/api/printing_job', 
+        axios.post(`${process.env.REACT_APP_API}/api/printing_job`, 
         this.props.job)
           .then(data => {
             this.props.update({
